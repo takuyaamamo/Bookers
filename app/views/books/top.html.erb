@@ -6,7 +6,7 @@
   <% @books.each do |book| %>
   <tr>
     <td><%= book.title %></td><td><%= book.body %></td>
-    <td><%= link_to 'Show', "books/show/#{book.id}" %>EditDestroy</td>
+    <td><%= link_to 'Show', show_path(book.id) %>EditDestroy</td>
   </tr>
   <% end %>
 </table>
