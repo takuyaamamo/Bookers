@@ -7,9 +7,12 @@ class BooksController < ApplicationController
 
   def create
     # strongパラメータを使用する
-    book = Book.new(book_params)
-    book.save
-    redirect_to show_path(book.id)
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to show_path(book.id)
+    else
+      render action: :top
+    end
   end
 
   def show
