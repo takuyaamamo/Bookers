@@ -9,8 +9,10 @@ class BooksController < ApplicationController
     # strongパラメータを使用する
     @book = Book.new(book_params)
     if @book.save
-      redirect_to show_path(book.id)
+      redirect_to show_path(@book.id)
     else
+      @book = Book.new
+      @books = Book.all
       render action: :top
     end
   end
