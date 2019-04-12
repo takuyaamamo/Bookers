@@ -1,14 +1,23 @@
 <h1>Editing Book</h1>
-<%# url:とmethod:を加えることで無理やり指定するmethodは不要かも %>
+<!-- url:とmethod:を加えることで無理やり指定するmethodは不要かも -->
 <%= form_for(@book, url: {action: "update"}, method: :patch) do |f| %>
+  <!-- バリデーションエラーを表示させる -->
+  <% if @book.errors.any? %>
+    <p>入力した内容にエラーが<%= @book.errors.count %>件あります</p>
+    <ul>
+      <% @book.errors.full_messages.each do |book_error| %>
+        <li><%= book_error %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
-<h4>Title</h4>
-<%=  f.text_field :title %>
+  <%= f.label :title, "title" %>
+  <%=  f.text_field :title %>
 
-<h4>Body</h4>
-<%= f.text_area :body %>
+  <%= f.label :body, "Body" %>
+  <%= f.text_area :body %>
 
-<%= f.submit 'Update Book' %>
+  <%= f.submit 'Update Book' %>
 
 <% end %>
 
