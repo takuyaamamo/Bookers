@@ -9,8 +9,10 @@ class BooksController < ApplicationController
     # strongパラメータを使用する
     @book = Book.new(book_params)
     if @book.save
+      flash[:notice] = "投稿成功!"
       redirect_to show_path(@book.id)
     else
+      flash[:notice] = "投稿失敗したやで"
       @books = Book.all
       render action: :top
     end
@@ -27,9 +29,11 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     if book.update(book_params)
+      flash[:notice] = "編集成功!"
       redirect_to show_path(book.id)
     else
       @book = Book.find(params[:id])
+      flash[:notice] = "編集失敗したやで"
       render action: :edit
     end
   end
