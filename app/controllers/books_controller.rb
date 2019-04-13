@@ -41,6 +41,8 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
+    flash[:notice] = "削除成功!"
+
     redirect_to top_path
   end
 
