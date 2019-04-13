@@ -17,15 +17,15 @@
   <% end %>
 
   <%= f.label :title, "title" %>
-  <%=  f.text_field :title %>
+  <%=  f.text_field :title, class:"book_title" %>
 
   <%= f.label :body, "Body" %>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, class:"book_body" %>
 
   <%= f.submit 'Update Book' %>
 
 <% end %>
 
-<%= link_to 'Show', show_path(@book.id) %>
+<%= link_to 'Show', show_path(@book.id), class:"show_#{@book.id}" %>
 |
-<a href="/books">Back</a>
+<a href="/books" class="back">Back</a>
